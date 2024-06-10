@@ -1,13 +1,14 @@
-'use client';
+"use client";
 
-import { useEffect } from 'react';
-import { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import './globals.css';
-import { setupWorker } from 'msw';
-import { handlers } from '@/mocks/handlers';
+import { useEffect } from "react";
+import { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import { setupWorker } from "msw";
+import { handlers } from "@/mocks/handlers";
+import Header from "@/components/Header";
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ["latin"] });
 
 // export const metadata: Metadata = {
 // 	title: 'Create Next App',
@@ -15,18 +16,21 @@ const inter = Inter({ subsets: ['latin'] });
 // };
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
-	// msw mocking
-	useEffect(() => {
-		if (typeof window !== 'undefined') {
-			const worker = setupWorker(...handlers);
-			worker.start();
-		}
-	}, []);
-	return (
-		<html lang="en">
-			<body className={inter.className}>{children}</body>
-		</html>
-	);
+  // msw mocking
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const worker = setupWorker(...handlers);
+      worker.start();
+    }
+  }, []);
+  return (
+    <html lang="en">
+      <body className={inter.className}>
+        <Header />
+        <div>{children}</div>
+      </body>
+    </html>
+  );
 };
 
 export default RootLayout;
