@@ -8,6 +8,9 @@ import { setupWorker } from "msw";
 import { handlers } from "@/mocks/handlers";
 import Header from "@/components/Header";
 import { QueryClient, QueryClientProvider } from "react-query";
+import Dexie from "dexie";
+import { db } from "@/mocks/db";
+
 const inter = Inter({ subsets: ["latin"] });
 
 // export const metadata: Metadata = {
@@ -19,6 +22,25 @@ const inter = Inter({ subsets: ["latin"] });
 const queryClient = new QueryClient();
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
+  useEffect(() => {
+    const checkDatabase = async () => {
+      try {
+        await Dexie.exists("TodoListDatabase").then((exists) => {
+          if (!exists) {
+            db.todoList.add({ title: "todo Title", todo: ["hello", "world"] });
+            console.log("Database created");
+          } else {
+            console.log("Database already exists");
+          }
+        });
+      } catch (error) {
+        console.error("Error checking database existence: " + error);
+      }
+    };
+
+    checkDatabase();
+  }, []);
+
   // msw mocking
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -26,6 +48,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
       worker.start();
     }
   }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <html lang="en">

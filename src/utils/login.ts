@@ -1,4 +1,4 @@
-import { useMutation, useQueryClient } from "react-query";
+import { useMutation } from "react-query";
 // react-query를 위한 login API
 import axios from "axios";
 
