@@ -117,10 +117,8 @@ export const handlers = [
     try {
       const todoList = await db.todoList.toArray();
       const [prevTodoList] = todoList[prevList].todo.splice(prevTodo, 1);
-      console.log("prevTodoList", prevTodoList);
       todoList[currentList].todo.splice(currentTodo, 0, prevTodoList);
-      console.log("currentTodoList", todoList[currentList].todo);
-      console.log("todoList", todoList);
+
       // 데이터베이스 업데이트
       db.todoList.clear();
       await db.transaction("rw", db.todoList, async () => {
