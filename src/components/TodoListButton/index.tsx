@@ -4,8 +4,8 @@ import TextField from "@mui/material/TextField";
 
 interface TodoListButtonProps {
   children: React.ReactNode;
-  id: number;
-  onClickConfirm: (id: number, title: string) => void;
+  id?: number;
+  onClickConfirm: (title: string, id?: number) => void;
 }
 
 const TodoListButton = ({
@@ -21,7 +21,11 @@ const TodoListButton = ({
   };
 
   const handleConfirmClick = () => {
-    onClickConfirm(id, todoName);
+    if (id) {
+      onClickConfirm(todoName, id);
+    } else {
+      onClickConfirm(todoName);
+    }
     setIsAdding(false);
     setTodoName("");
   };

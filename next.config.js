@@ -4,6 +4,7 @@ const withJest = require("next/jest");
 const isTest = process.env.NODE_ENV === "test";
 
 const nextConfig = {
+  output: "standalone",
   reactStrictMode: false,
   // other Next.js configurations
 };
