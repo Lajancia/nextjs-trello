@@ -1,35 +1,19 @@
 FROM node:18-alpine as base
-RUN apk add --no-cache g++ make py3-pip libc6-compat
-WORKDIR /app
-COPY package*.json ./
-EXPOSE 3000
+RUN apk add --no-cache libc6-compat
 
 FROM base as builder
 WORKDIR /app
 COPY . .
 RUN npm run build
 
-
-FROM base as production
+FROM builder as production
 WORKDIR /app
-
-ENV NODE_ENV=production
-RUN npm ci
-
-RUN addgroup -g 1001 -S nodejs
-RUN adduser -S nextjs -u 1001
-USER nextjs
-
-
-COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/package.json ./package.json
+RUN npm install --global pm2
+RUN addgroup --system --gid 1002 nextgroup
+RUN adduser --system --uid 1002 nextuser
 COPY --from=builder /app/public ./public
-
-CMD npm start
-
-FROM base as dev
-ENV NODE_ENV=development
-RUN npm install 
-COPY . .
-CMD npm run dev
+COPY --from=builder --chown=nextuser:nextgroup /app/.next/standalone ./
+COPY --from=builder --chown=nextuser:nextgroup /app/.next/static ./.next/static
+COPY --from=builder --chown=nextuser:nextgroup /app/ecosystem.config.js ./
+USER nextuser
+ENTRYPOINT ["pm2-runtime", "start","ecosystem.config.js"]
