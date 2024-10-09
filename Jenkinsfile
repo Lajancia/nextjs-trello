@@ -1,13 +1,19 @@
 pipeline {
     agent any
     
-    stages {
+    stages() {
         
-        stage('github-clone') {
-            steps {
-                git branch: 'main', credentialsId: 'github_token', url: '{REPOSITORY URL}'
+     stage('git clone') {
+            steps() {
+                git 'https://github.com/Lajancia/nextjs-trello.git'
             }
+            
         }
+    stage('Test') {
+    steps {
+        echo 'Testing..'
+    }
+}
         
    		// stage...
    	}
