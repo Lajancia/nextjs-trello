@@ -3,11 +3,11 @@ pipeline {
     
     stages() {
         
-     stage('git clone') {
-            steps() {
-                git 'https://github.com/Lajancia/nextjs-trello.git'
+    stage('Checkout') {
+            steps {
+                checkout scmGit(branches: [[name: 'main']], 
+                                userRemoteConfigs: [[url: 'https://github.com/Lajancia/nextjs-trello.git']])
             }
-            
         }
     stage('Test') {
     steps {
