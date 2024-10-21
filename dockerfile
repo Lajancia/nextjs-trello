@@ -4,6 +4,7 @@ RUN apk add --no-cache libc6-compat
 FROM base as builder
 WORKDIR /app
 COPY . .
+RUN npm install
 RUN npm run build
 
 FROM builder as production
