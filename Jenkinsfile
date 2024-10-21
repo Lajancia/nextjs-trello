@@ -13,7 +13,7 @@ pipeline {
             steps {
                 echo 'Docker building..'
                 script {
-                    sh 'docker build -t Next14-trello .'
+                    sh 'docker build -t next14-trello .'
                 }
             }
         
