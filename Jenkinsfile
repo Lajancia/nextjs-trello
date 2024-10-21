@@ -9,10 +9,14 @@ pipeline {
                                 userRemoteConfigs: [[url: 'https://github.com/Lajancia/nextjs-trello.git']])
             }
         }
-    stage('Test') {
+    stage('Docker Image Build') {
     steps {
-        echo 'Testing..'
-    }
+        echo 'Docker building..'
+        script {
+            sh 'docker-compose down'
+            sh 'docker-compose build'
+        }
+    
 }
         
    		// stage...
