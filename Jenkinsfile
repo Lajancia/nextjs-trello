@@ -9,6 +9,13 @@ pipeline {
                                     userRemoteConfigs: [[url: 'https://github.com/Lajancia/nextjs-trello.git']])
                 }
             }
+        stage('Install Dependencies') {
+            steps {
+                script {
+                    sh 'npm install'
+                }
+            }
+        }
         stage('Docker Image Build') {
             steps {
                 echo 'Docker building..'
