@@ -19,7 +19,13 @@ pipeline {
             }
         
         }
-        
+         stage('Run Docker Image') {
+            steps {
+                script {
+                    def myContainer = docker.image('next-trello').run('-d -p 3000:3000')
+                }
+            }
+        }
    		// stage...
    	}
 }
