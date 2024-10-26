@@ -19,12 +19,12 @@ pipeline {
             }
         
         }
-        
+
          stage('Run Docker Container') {
             steps {
                 sh 'docker stop next-trello || true'
                 sh 'docker rm next-trello || true'
-                sh 'docker run --name next-trello --network my-network next-trello'
+                sh 'docker run --name next-trello --network my-network next14-trello'
             }
         }
    		// stage...
