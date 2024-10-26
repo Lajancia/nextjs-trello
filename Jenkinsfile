@@ -19,11 +19,12 @@ pipeline {
             }
         
         }
-         stage('Run Docker Image') {
+        
+         stage('Run Docker Container') {
             steps {
-                script {
-                    def myContainer = docker.image('next-trello').run('-d -p 3000:3000')
-                }
+                sh 'docker stop next-trello || true'
+                sh 'docker rm next-trello || true'
+                sh 'docker run --name next-trello --network my-network next-trello'
             }
         }
    		// stage...
