@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Nextjs Drag and Drop Dashboard 개발
 
 ## Getting Started
 
 First, run the development server:
 
 ```bash
+npm i
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Stack
+* MSW mocking
+* Next14 app router
+* react-hook-form
+* react-query
+* Typescript
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Develop Post
+[Next.js 시작하기 -1](https://soomins.tistory.com/3)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+[Next.js 시작하기 -2](https://soomins.tistory.com/4)
 
-## Learn More
+[Next.js 시작하기 - 프로젝트 세팅 (3) Zustand/Typescript+Jest/MUI](https://soomins.tistory.com/9)
 
-To learn more about Next.js, take a look at the following resources:
+[Next.js 시작하기 - 간단한 Login 페이지 만들기 (1) Router](https://soomins.tistory.com/10)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+[Next.js 시작하기 - 간단한 Login 페이지 만들기 (2) React-Hook-Form](https://soomins.tistory.com/12)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+[Next.js 시작하기 - 간단한 Login 페이지 만들기 (3) React-Query](https://soomins.tistory.com/20)
 
-## Deploy on Vercel
+[Next.js 시작하기 - 간단한 Login 페이지 만들기 (4) React-Query](https://soomins.tistory.com/23)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+[Next.js 시작하기 - Drag and Drop 만들기 (1) IndexedDB](https://soomins.tistory.com/26)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+[Next.js 시작하기 - Drag and Drop 만들기 (2) MSW + indexedDB](https://soomins.tistory.com/27)
+
+[Next.js 시작하기 - Drag and Drop 만들기 (3) Draggable](https://soomins.tistory.com/30)
+
+[Next.js 시작하기 - Drag and Drop 만들기 (4) Draggable](https://soomins.tistory.com/32)
